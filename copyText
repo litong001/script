@@ -1,3 +1,14 @@
 function(){
-  
+  document.querySelectorAll('body, code, p, span, div').forEach((node)=>{
+    node.style.setProperty("cursor", "text", "important");
+    node.style.setProperty("user-select", "text", "important");
+  })
+  document.addEventListener('copy',(e)=>{
+    if (window.getSelection){
+      window.navigator.clipboard.writeText(window.getSelection().toString());
+      e.cancelBubble = true;
+    }else{
+      console.log('更换新浏览器');
+    }
+  }, true)
 }
